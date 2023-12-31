@@ -7,8 +7,8 @@ Created on Sat Jun 27 00:32:00 2020
 
 import jieba
 import numpy as np
-from nn.utils import load_txt
-from nn.hyperparameters import Hyperparamters as hp
+from utils import load_txt
+from hyperparameters import Hyperparamters as hp
 
 vocabulary = load_txt(hp.file_vocabulary)[:hp.sequence_length]
 vocabulary_set = set(vocabulary)

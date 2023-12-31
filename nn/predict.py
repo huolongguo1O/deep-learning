@@ -6,10 +6,10 @@ Created on Sat Jun 27 02:31:02 2020
 """
 
 import numpy as np
-from nn.utils import load_model
-from nn.networks import NeuralNetwork
-from nn.hyperparameters import Hyperparamters as hp
-from nn.load_data import load_test_data, sentence2vector
+from utils import load_model
+from networks import NeuralNetwork
+from hyperparameters import Hyperparamters as hp
+from load_data import load_test_data, sentence2vector
 
 NN = NeuralNetwork()
 w1, b1, w2, b2 = load_model(hp.file_load_model)

@@ -43,7 +43,7 @@ def shuffle_two(a1, a2):
 
 
 def save_model(w1, b1, w2, b2, file_save_model):
-    np.savez(file_save_model, w1, b1, w2, b2)
+    np.savez(file_save_model, w1, b1, w2, b2, filemode = 'w+')
     print('Save model finished!')
 
 

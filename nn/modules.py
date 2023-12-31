@@ -6,7 +6,7 @@ Created on Mon Jun 22 10:13:58 2020
 """
 
 import numpy as np
-from nn.hyperparameters import Hyperparamters as hp
+from hyperparameters import Hyperparamters as hp
 
 
 def error_sample(y, yp):
@@ -33,7 +33,7 @@ def sparse_softmax_cross_entropy_with_logits(logits, labels):
     loss
     """
     logits = softmax(np.array(logits))
-    return -np.sum(np.array(labels) * np.log(logits), axis=1)
+    return -np.sum(np.array(labels) * np.log(logits))# , axis=1)
 
 
 def full_connection_tanh(input_, weight, bias):

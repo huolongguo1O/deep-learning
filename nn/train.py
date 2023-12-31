@@ -6,11 +6,11 @@ Created on Sat Jun 27 00:20:28 2020
 """
 
 import numpy as np
-from nn.networks import NeuralNetwork
-from nn.hyperparameters import Hyperparamters as hp
-from nn.load_data import load_train_data,load_test_data
-from nn.utils import cut_list, time_now_string, save_model, shuffle_two
-from nn.utils import plot_loss, plot_accuracy
+from networks import NeuralNetwork
+from hyperparameters import Hyperparamters as hp
+from load_data import load_train_data,load_test_data
+from utils import cut_list, time_now_string, save_model, shuffle_two
+from utils import plot_loss, plot_accuracy
 
 NN = NeuralNetwork()
 
@@ -33,7 +33,8 @@ def train(x, y, x_test, y_test, batch_size=hp.batch_size):
             w1, b1, w2, b2 = NN.backward(np.array(x_bloc[i]), np.array([y_bloc[i]]).T, output1, output2, w1, b1, w2, b2,
                                          hp.lr, batch_size)
             # Train loss and accuracy
-            loss = NN.loss(np.array([y_bloc[i]]).T, output2, batch_size)
+            # loss = NN.loss(np.array([y_bloc[i]]).T, output2, batch_size)
+            loss = NN.loss(np.array([y_bloc[i]]).T, output2)
             accuracy = NN.accuracy(y_bloc[i], output2)
             global_loss.append(loss)
             global_accuracy.append(accuracy)
@@ -41,7 +42,8 @@ def train(x, y, x_test, y_test, batch_size=hp.batch_size):
             global_steps.append(global_step)
             # Test loss and accuracy
             output1_test, output2_test = NN.forward(np.array(x_test), w1, b1, w2, b2)
-            loss_test = NN.loss(np.array([y_test]).T, output2_test, len(y_test))
+            # loss_test = NN.loss(np.array([y_test]).T, output2_test, len(y_test))
+            loss_test = NN.loss(np.array([y_bloc[i]]).T, output2)
             accuracy_test = NN.accuracy(y_test, output2_test)
             global_loss_test.append(loss_test) 
             global_accuracy_test.append(accuracy_test)

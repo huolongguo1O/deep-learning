@@ -6,11 +6,11 @@ Created on Sat Jun 27 01:06:44 2020
 """
 
 import numpy as np
-from nn.hyperparameters import Hyperparamters as hp
-from nn.modules import sparse_softmax_cross_entropy_with_logits
-from nn.modules import full_connection_sigmoid, error_sample,full_connection_tanh
-from nn.modules import back_propagation_cross_entropy_batch,back_propagation_cross_entropy_batch_2
-from nn.modules import back_propagation_quadratic_batch,back_propagation_quadratic_batch_2
+from hyperparameters import Hyperparamters as hp
+from modules import sparse_softmax_cross_entropy_with_logits
+from modules import full_connection_sigmoid, error_sample,full_connection_tanh
+from modules import back_propagation_cross_entropy_batch,back_propagation_cross_entropy_batch_2
+from modules import back_propagation_quadratic_batch,back_propagation_quadratic_batch_2
 
 
 class NeuralNetwork(object):
@@ -29,7 +29,7 @@ class NeuralNetwork(object):
         """
         The forward and the backward must have the same activation activation.
         """
-        return full_connection_tanh(x, w1, b1), full_connection_sigmoid(output1, w2, b2)
+        return full_connection_tanh(x, w1, b1), full_connection_sigmoid(x, w2, b2)
 
     def backward(self, x, y, output1, output2, w1, b1, w2, b2, batch_size, lr=hp.lr):
         """
